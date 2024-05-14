@@ -15,14 +15,14 @@ export const useApi = () => {
   ) => {
     let url = "";
     const formData = new FormData();
-    formData.append("file", uploadedImage);
+    formData.append("image", uploadedImage);
 
     switch (selectedOption) {
       case "segmentation":
         url =
           segmentationOption === "semantic"
-            ? "/segment-semantic"
-            : "/segment-instance";
+            ? "/semantic-segmentation"
+            : "/instance-segmentation";
         if (segmentationOption === "instance") {
           console.log("here");
           formData.append("input", instanceText);
