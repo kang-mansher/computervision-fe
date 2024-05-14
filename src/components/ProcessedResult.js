@@ -46,7 +46,10 @@ const ProcessedResult = ({ isOpen, onClose, result, error, isLoading }) => {
               <img
                 src={result}
                 alt="result"
-                style={{ width: "100%", height: "100%" }}
+                style={{
+                  maxWidth: isMobile ? "500px" : "800px",
+                  maxHeight: isMobile ? "500px" : "700px",
+                }}
               />
             ) : (
               <p>{result}</p>
