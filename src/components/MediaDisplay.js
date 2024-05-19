@@ -32,6 +32,7 @@ const MediaDisplay = ({ media, onVideoCapture }) => {
       sx={{
         textAlign: "center",
         maxWidth: isMobile ? "350px" : "800px",
+        paddingTop: isMobile ? "32px" : "64px",
       }}
     >
       {media.type.startsWith("image") && (

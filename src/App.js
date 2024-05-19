@@ -4,9 +4,10 @@ import Options from "./components/Options";
 import ProcessedResult from "./components/ProcessedResult";
 import { useApi } from "./hooks/useApi";
 import Home from "./components/Home";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import HomeIcon from "@mui/icons-material/Home";
 import useScreenSize from "./hooks/useScreenSize";
 import MediaDisplay from "./components/MediaDisplay";
+import Header from "./components/Header";
 
 const App = () => {
   const { result, isLoading, error, getProcessedResults } = useApi();
@@ -47,14 +48,7 @@ const App = () => {
   return (
     <div>
       <>
-        {uploadedMedia && (
-          <IconButton
-            onClick={onReset}
-            sx={{ position: "absolute", top: "16px", left: "16px" }}
-          >
-            <ArrowBackIcon fontSize="large" />
-          </IconButton>
-        )}
+        <Header onHomeClick={onReset} />
         {!uploadedMedia && <Home onUpload={handleMediaUpload} />}
         <Box sx={{ height: isMobile ? "80vh" : "100vh" }} alignContent="center">
           <Stack
