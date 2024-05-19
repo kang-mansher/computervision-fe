@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, Stack, TextField } from "@mui/material";
 import SelectOption from "./SelectOption";
 
 const TextInput = ({ id, label, onChange }) => {
@@ -16,7 +16,7 @@ const TextInput = ({ id, label, onChange }) => {
   );
 };
 
-const Options = ({ onGetResults }) => {
+const Options = ({ onGetResults, onReset, isImageUploaded }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [segmentationOption, setSegmentationOption] = useState("");
   const [captioningOption, setCaptioningOption] = useState("");
@@ -137,14 +137,19 @@ const Options = ({ onGetResults }) => {
           )}
         </>
       )}
-      <Button
-        type="button"
-        onClick={handleGetResults}
-        variant="contained"
-        disabled={isDisabled}
-      >
-        Get Results
-      </Button>
+      <Stack justifyContent="space-around" direction="row">
+        <Button
+          type="button"
+          onClick={handleGetResults}
+          variant="contained"
+          disabled={isDisabled}
+        >
+          Get Results
+        </Button>
+        <Button type="button" onClick={onReset} variant="contained">
+          Reset
+        </Button>
+      </Stack>
     </Box>
   );
 };

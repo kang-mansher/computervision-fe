@@ -1,27 +1,29 @@
-import { Divider, Stack } from "@mui/material";
+import { Box, Divider, IconButton, Stack } from "@mui/material";
 import React, { useState } from "react";
-import ImageDisplay from "./components/ImageDisplay";
-import Intro from "./components/Intro";
 import Options from "./components/Options";
 import ProcessedResult from "./components/ProcessedResult";
-import UploadButton from "./components/UploadButton";
-import useScreenSize from "./hooks/useScreenSize";
 import { useApi } from "./hooks/useApi";
+import Home from "./components/Home";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import useScreenSize from "./hooks/useScreenSize";
+import MediaDisplay from "./components/MediaDisplay";
 
 const App = () => {
   const { result, isLoading, error, getProcessedResults } = useApi();
-  const [uploadedImage, setUploadedImage] = useState(null);
+  const [uploadedMedia, setUploadedMedia] = useState(null);
   const [isOpen, setIsOpen] = useState();
   const { isMobile } = useScreenSize();
-
-  console.log(isMobile);
 
   const onClose = () => {
     setIsOpen(false);
   };
 
-  const handleImageUpload = (image) => {
-    setUploadedImage(image);
+  const handleMediaUpload = (media) => {
+    setUploadedMedia(media);
+  };
+
+  const onReset = () => {
+    setUploadedMedia(null);
   };
 
   const onGetResults = async (
@@ -38,33 +40,45 @@ const App = () => {
       captioningOption,
       instanceText,
       questionText,
-      uploadedImage
+      uploadedMedia
     );
   };
 
   return (
-    <div className="App">
+    <div>
       <>
-        <Stack alignItems="center">
-          <Intro />
-          <UploadButton onUpload={handleImageUpload} />
-        </Stack>
-        <Divider />
-        <Stack
-          direction={isMobile ? "column" : "row"}
-          gap={3}
-          justifyContent="center"
-          p={2}
-        >
-          {uploadedImage && <ImageDisplay image={uploadedImage} />}
-          <Divider
-            flexItem={true}
-            orientation={isMobile ? "horizontal" : "vertical"}
-          />
-          {uploadedImage && (
-            <Options image={uploadedImage} onGetResults={onGetResults} />
-          )}
-        </Stack>
+        {uploadedMedia && (
+          <IconButton
+            onClick={onReset}
+            sx={{ position: "absolute", top: "16px", left: "16px" }}
+          >
+            <ArrowBackIcon fontSize="large" />
+          </IconButton>
+        )}
+        {!uploadedMedia && <Home onUpload={handleMediaUpload} />}
+        <Box sx={{ height: isMobile ? "80vh" : "100vh" }} alignContent="center">
+          <Stack
+            direction={isMobile ? "column" : "row"}
+            gap={3}
+            justifyContent="center"
+            alignItems="center"
+          >
+            {uploadedMedia && (
+              <MediaDisplay
+                media={uploadedMedia}
+                onVideoCapture={handleMediaUpload}
+              />
+            )}
+            <Divider flexItem={true} orientation="vertical" />
+            {uploadedMedia && (
+              <Options
+                image={uploadedMedia}
+                onGetResults={onGetResults}
+                onReset={onReset}
+              />
+            )}
+          </Stack>
+        </Box>
       </>
       {(result || isLoading || error) && (
         <ProcessedResult

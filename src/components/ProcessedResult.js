@@ -47,7 +47,7 @@ const ProcessedResult = ({ isOpen, onClose, result, error, isLoading }) => {
                 src={result}
                 alt="result"
                 style={{
-                  maxWidth: isMobile ? "500px" : "800px",
+                  maxWidth: isMobile ? "350px" : "800px",
                   maxHeight: isMobile ? "500px" : "700px",
                 }}
               />
