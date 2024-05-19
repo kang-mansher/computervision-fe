@@ -143,7 +143,10 @@ const Options = ({ onGetResults, onReset, isImageUploaded }) => {
           onClick={handleGetResults}
           variant="contained"
           disabled={isDisabled}
-          sx={{ backgroundColor: "#343434" }}
+          sx={{
+            backgroundColor: "#343434",
+            "&:hover, &:active": { backgroundColor: "#000000" },
+          }}
         >
           Get Results
         </Button>
@@ -151,7 +154,10 @@ const Options = ({ onGetResults, onReset, isImageUploaded }) => {
           type="button"
           onClick={onReset}
           variant="contained"
-          sx={{ backgroundColor: "#343434" }}
+          sx={{
+            backgroundColor: "#343434",
+            "&:hover, &:active": { backgroundColor: "#000000" },
+          }}
         >
           Reset
         </Button>
