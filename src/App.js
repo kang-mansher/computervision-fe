@@ -1,10 +1,9 @@
-import { Box, Divider, IconButton, Stack } from "@mui/material";
+import { Box, Divider, Stack } from "@mui/material";
 import React, { useState } from "react";
 import Options from "./components/Options";
 import ProcessedResult from "./components/ProcessedResult";
 import { useApi } from "./hooks/useApi";
 import Home from "./components/Home";
-import HomeIcon from "@mui/icons-material/Home";
 import useScreenSize from "./hooks/useScreenSize";
 import MediaDisplay from "./components/MediaDisplay";
 import Header from "./components/Header";
