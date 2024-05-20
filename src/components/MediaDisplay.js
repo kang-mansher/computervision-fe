@@ -51,7 +51,11 @@ const MediaDisplay = ({ media, onVideoCapture }) => {
               type="button"
               variant="contained"
               onClick={onResume}
-              sx={{ marginTop: "10px" }}
+              sx={{
+                backgroundColor: "#343434",
+                marginTop: "10px",
+                "&:hover, &:active": { backgroundColor: "#000000" },
+              }}
             >
               Go back to video
             </Button>
@@ -75,7 +79,11 @@ const MediaDisplay = ({ media, onVideoCapture }) => {
             type="button"
             variant="contained"
             onClick={onPause}
-            sx={{ marginTop: "10px" }}
+            sx={{
+              backgroundColor: "#343434",
+              marginTop: "10px",
+              "&:hover, &:active": { backgroundColor: "#000000" },
+            }}
           >
             Capture
           </Button>

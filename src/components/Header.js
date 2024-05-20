@@ -11,7 +11,7 @@ const Header = ({ onHomeClick }) => {
     <AppBar component="nav" sx={{ backgroundColor: "#343434" }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <IconButton color="inherit" onClick={onHomeClick}>
-          <HomeIcon />
+          <HomeIcon fontSize="large" />
         </IconButton>
         <Box>
           <Typography variant="h6" component="div">
