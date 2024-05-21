@@ -45,7 +45,7 @@ export const useApi = () => {
     }
 
     const apiUrl =
-      "https://computervision-a1847374.azuremicroservices.io" + url;
+      "http://computervision-a1847374.eastus.cloudapp.azure.com" + url;
 
     return { apiUrl, params: formData };
   };
